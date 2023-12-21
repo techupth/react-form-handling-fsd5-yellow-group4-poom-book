@@ -1,6 +1,19 @@
+import { useState } from "react";
+
 function ProductForm() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    return alert(
+      `Submit username: ${username} image: ${image} preice: ${price} description: ${description} and to server`
+    );
+  };
+  const [username, setUsername] = useState("");
+  const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+
   return (
-    <form className="post-form">
+    <form className="post-form" onSubmit={handleSubmit}>
       <h1>Create Product Form</h1>
       <div className="input-container">
         <label>
@@ -10,7 +23,10 @@ function ProductForm() {
             name="name"
             type="text"
             placeholder="Enter name here"
-            onChange={() => {}}
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -22,7 +38,10 @@ function ProductForm() {
             name="image"
             type="text"
             placeholder="Enter image url here"
-            onChange={() => {}}
+            value={image}
+            onChange={(e) => {
+              setImage(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -34,7 +53,10 @@ function ProductForm() {
             name="price"
             type="number"
             placeholder="Enter price here"
-            onChange={() => {}}
+            value={price}
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
           />
         </label>
       </div>
@@ -46,7 +68,10 @@ function ProductForm() {
             name="description"
             type="text"
             placeholder="Enter description here"
-            onChange={() => {}}
+            value={description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
             rows={4}
             cols={30}
           />
